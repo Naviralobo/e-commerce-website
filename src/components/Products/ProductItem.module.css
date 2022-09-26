@@ -1,0 +1,17 @@
+.price {
+  margin-bottom: 1rem;
+  display: flex;
+}
+.title {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+.button {
+  margin-left: 50%;
+  background-color: rgb(10, 115, 115);
+  color: white;
+  border-radius: 6px;
+}
+.list {
+  margin-left: 20%;
+}

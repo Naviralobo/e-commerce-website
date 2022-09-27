@@ -1,0 +1,38 @@
+.cartItemList {
+  display: flex;
+  border-bottom: 1px solid black;
+  padding-bottom: 10px;
+  margin-right: 1.5em;
+
+  margin-top: 10px;
+  align-items: center;
+}
+.cartItemList img {
+  width: 80px;
+  border-radius: 8%;
+  margin-right: 200px;
+}
+
+.cartColumn {
+  display: flex;
+  flex-wrap: wrap;
+}
+.items {
+  width: 45%;
+}
+.price {
+  width: 20%;
+}
+.cartQuantity {
+  width: 40px;
+  height: 30px;
+  border: 1px solid rgb(0, 204, 255);
+  border-radius: 8%;
+  outline: none;
+  text-align: center;
+  margin-right: 20px;
+}
+.removeButton {
+  background-color: rgb(231, 27, 4);
+  color: white;
+}

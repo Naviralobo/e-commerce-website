@@ -1,0 +1,10 @@
+.modalOverlay {
+  margin: 0px;
+  position: fixed;
+  top: 50px;
+  height: 95%;
+  right: 0;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(177, 103, 103);
+  min-height: 50vh;
+}

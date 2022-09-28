@@ -14,14 +14,20 @@ const Header = (props) => {
     <header>
       <div className={classes.header}>
         <ul>
-          <li>HOME</li>
+          <li>
+            <NavLink activeClassName={classes.active} to="/home">
+              HOME
+            </NavLink>
+          </li>
           <li>
             <NavLink activeClassName={classes.active} to="/store">
               STORE
             </NavLink>
           </li>
           <li>
-            <NavLink to="/about">ABOUT</NavLink>
+            <NavLink activeClassName={classes.active} to="/about">
+              ABOUT
+            </NavLink>
           </li>
         </ul>
         <div className={classes.btn}>

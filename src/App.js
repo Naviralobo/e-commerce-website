@@ -7,6 +7,7 @@ import AvailableProducts from "./components/Products/AvailbleProducts";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
 import About from "./components/Pages/About";
+import Home from "./components/Pages/Home";
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -20,18 +21,20 @@ function App() {
 
   return (
     <>
+      <Header onShowCart={showCartHandler} />
+      <Footer />
       <CartProvider>
         <Route path="/store">
           {cartIsShown && <Cart onHideCart={hidecartHandler} />}
-          <Header onShowCart={showCartHandler} />
+
           <AvailableProducts />
-          <Footer />
         </Route>
       </CartProvider>
       <Route path="/about">
-        <Header />
         <About />
-        <Footer />
+      </Route>
+      <Route path="/home">
+        <Home />
       </Route>
     </>
   );

@@ -1,4 +1,5 @@
 import React, { useContext } from "react";
+import { NavLink } from "react-router-dom";
 import classes from "./Header.module.css";
 import CartCntxt from "../../store/CartContext";
 const Header = (props) => {
@@ -14,8 +15,14 @@ const Header = (props) => {
       <div className={classes.header}>
         <ul>
           <li>HOME</li>
-          <li>STORE</li>
-          <li>ABOUT</li>
+          <li>
+            <NavLink activeClassName={classes.active} to="/store">
+              STORE
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/about">ABOUT</NavLink>
+          </li>
         </ul>
         <div className={classes.btn}>
           <button onClick={props.onShowCart} className={classes.button}>

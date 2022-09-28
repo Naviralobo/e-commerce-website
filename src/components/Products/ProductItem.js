@@ -5,7 +5,7 @@ import CartCntxt from "../../store/CartContext";
 const ProductItem = (props) => {
   const cartCntxt = useContext(CartCntxt);
   return (
-    <div className={classes.list}>
+    <body className={classes.list}>
       <li>
         <div className={classes.title}>
           <h3>{props.title}</h3>
@@ -25,7 +25,7 @@ const ProductItem = (props) => {
           </button>
         </div>
       </li>
-    </div>
+    </body>
   );
 };
 

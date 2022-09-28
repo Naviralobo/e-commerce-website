@@ -52,3 +52,15 @@ h1 {
   margin-left: 90%;
   padding: 5px;
 }
+.header a {
+  color: white;
+  text-decoration: none;
+}
+
+.header a:hover,
+.header a:active,
+.header a.active {
+  color: #95bcf0;
+  padding-bottom: 0.25rem;
+  border-bottom: 4px solid #95bcf0;
+}

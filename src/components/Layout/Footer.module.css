@@ -16,7 +16,9 @@
   display: flex;
   background-color: rgb(124, 163, 193);
   padding: 20px;
-  margin-top: 40px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 .footerIcons img {
   width: 10mm;

@@ -1,42 +1,46 @@
-import React from "react";
+import React, { useContext } from "react";
 import CartItems from "./CartItems";
 import classes from "./Cart.module.css";
 import Modal from "../UI/Modal";
-const cartElements = [
-  {
-    title: "Colors",
-    price: 100,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
-    quantity: 2,
-  },
-  {
-    title: "Black and white Colors",
-    price: 50,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
-    quantity: 3,
-  },
-  {
-    title: "Yellow and Black Colors",
-    price: 70,
-    imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
-    quantity: 1,
-  },
-];
+import CartCntxt from "../../store/CartContext";
+// const cartElements = [
+//   {
+//     title: "Colors",
+//     price: 100,
+//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
+//     quantity: 2,
+//   },
+//   {
+//     title: "Black and white Colors",
+//     price: 50,
+//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
+//     quantity: 3,
+//   },
+//   {
+//     title: "Yellow and Black Colors",
+//     price: 70,
+//     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
+//     quantity: 1,
+//   },
+// ];
 
 const Cart = (props) => {
-  const cartItems = cartElements.map((cartElement) => (
+  const cartCntxt = useContext(CartCntxt);
+  const cartItems = cartCntxt.items.map((cartElement) => (
     <CartItems
       title={cartElement.title}
       price={cartElement.price}
       image={cartElement.imageUrl}
       quantity={cartElement.quantity}
+      item={props}
     />
   ));
 
   let totalAmount = 0;
-  cartElements.map((cartElement) => {
-    return (totalAmount =
-      totalAmount + cartElement.price * cartElement.quantity);
+  cartCntxt.items.map((cartElement) => {
+    return (totalAmount = Number(
+      totalAmount + cartElement.price * cartElement.quantity
+    ));
   });
   return (
     <Modal>
@@ -50,7 +54,7 @@ const Cart = (props) => {
       </div>
       <div className={classes.subHeading}>
         <span className={classes.item}>ITEM</span>
-        <span classNmae={classes.price}>PRICE</span>
+        <span className={classes.price}>PRICE</span>
         <span className={classes.quantity}>QUANTITY</span>
       </div>
       <ul className={classes.cartUl}>{cartItems}</ul>
@@ -58,6 +62,7 @@ const Cart = (props) => {
         <span>Total Amount</span>
         <span>Rs.{totalAmount}</span>
       </div>
+      <button className={classes.purchaseButton}>PURCHASE</button>
     </Modal>
   );
 };

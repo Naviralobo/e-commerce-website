@@ -40,7 +40,7 @@
   width: 20%;
 }
 .quantity {
-  width: 40%;
+  width: 30%;
 }
 .totalAmount {
   display: flex;
@@ -49,4 +49,12 @@
   margin-right: 20%;
   margin-top: 5%;
   font-family: cursive;
+}
+.purchaseButton {
+  padding: 5px;
+  background-color: rgb(16, 98, 192);
+  color: white;
+  border-radius: 7px;
+  margin-top: 10px;
+  margin-left: 45%;
 }

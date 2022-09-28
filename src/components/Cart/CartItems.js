@@ -12,6 +12,7 @@ const CartItems = (props) => {
 
       <span className={classes.price}>{props.price}</span>
       <span className={classes.cartQuantity}>{props.quantity}</span>
+      {/* change to input later */}
       <button className={classes.removeButton}>Remove</button>
     </li>
   );

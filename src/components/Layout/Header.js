@@ -1,6 +1,14 @@
-import React from "react";
+import React, { useContext } from "react";
 import classes from "./Header.module.css";
+import CartCntxt from "../../store/CartContext";
 const Header = (props) => {
+  const cartCntxt = useContext(CartCntxt);
+
+  let quantity = 0;
+  cartCntxt.items.forEach((item) => {
+    quantity = quantity + Number(item.quantity);
+  });
+
   return (
     <header>
       <div className={classes.header}>
@@ -13,7 +21,7 @@ const Header = (props) => {
           <button onClick={props.onShowCart} className={classes.button}>
             Cart
           </button>
-          <span> 0</span>
+          <span> {quantity}</span>
         </div>
       </div>
       <h1>The Generics</h1>

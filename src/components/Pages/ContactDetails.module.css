@@ -1,0 +1,36 @@
+.form {
+  margin: 1rem auto;
+  width: 30%;
+  max-width: 40rem;
+  text-align: center;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  border: 1px solid rgb(187, 186, 186);
+}
+form {
+  display: block;
+}
+input {
+  width: 100%;
+  margin: 3px;
+  margin-bottom: 7px;
+  border: 1px solid rgb(187, 186, 186);
+  border-radius: 7px;
+  height: 30px;
+}
+label {
+  float: left;
+  margin: 3px;
+  font-weight: bolder;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+  background: #230052;
+  border: 1px solid #230052;
+  color: white;
+  padding: 0.25rem 1rem;
+  border-radius: 12px;
+}

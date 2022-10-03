@@ -34,23 +34,26 @@ const ContactDetails = (props) => {
     console.log(data);
   }
   return (
-    <div className={classes.form}>
-      <form onSubmit={addContactHandler}>
-        <div>
-          <label htmlFor="name">Name</label>
-          <input id="name" type="text" ref={nameInputRef} />
-        </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input id="email" type="text" ref={emailInputRef} />
-        </div>
-        <div>
-          <label htmlFor="phone">Phone Number</label>
-          <input id="phone" type="text" ref={phoneInputRef} />
-        </div>
+    <div>
+      <h1>The Generics</h1>
+      <div className={classes.form}>
+        <form onSubmit={addContactHandler}>
+          <div>
+            <label htmlFor="name">Name</label>
+            <input id="name" type="text" ref={nameInputRef} />
+          </div>
+          <div>
+            <label htmlFor="email">Email</label>
+            <input id="email" type="text" ref={emailInputRef} />
+          </div>
+          <div>
+            <label htmlFor="phone">Phone Number</label>
+            <input id="phone" type="text" ref={phoneInputRef} />
+          </div>
 
-        <button type="submit">Submit</button>
-      </form>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
     </div>
   );
 };

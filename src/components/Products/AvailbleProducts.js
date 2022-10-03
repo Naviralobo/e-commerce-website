@@ -42,6 +42,7 @@ const AvailableProducts = () => {
   ));
   return (
     <div className={classes.styleDiv}>
+      <h1>The Generics</h1>
       <ul className={classes.productsList}>{productList}</ul>;
     </div>
   );

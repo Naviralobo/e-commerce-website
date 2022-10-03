@@ -13,10 +13,11 @@ const tours = [
 const Home = () => {
   return (
     <div>
+      <h1>The Generics</h1>
       <div className={classes.divHome}>
         <button className={classes.getButton}>Get Our Latest Album</button>
         <br></br>
-        <img className={classes.playButton} src={image} />
+        <img className={classes.playButton} src={image} alt="" />
       </div>
       <h3 className={classes.h3Home}>TOURS</h3>
       <ul className={classes.ulHome}>

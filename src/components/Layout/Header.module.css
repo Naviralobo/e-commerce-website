@@ -15,20 +15,21 @@
 
 .header ul {
   display: flex;
-  font-size: 18px;
+  font-size: 15px;
   font-weight: bolder;
   font-family: "Times New Roman", Times, serif;
-  justify-content: space-around;
+  justify-content: space-between;
   list-style-type: none;
   position: fixed;
   top: 0%;
   margin-left: 40%;
   z-index: 1;
-  background: black;
+  text-align: center;
+  align-items: center;
   padding: 5px;
 }
 .header li {
-  margin-left: 40%;
+  margin-left: 10%;
 }
 
 h1 {

@@ -4,9 +4,10 @@ import classes from "./About.module.css";
 const About = () => {
   return (
     <body className={classes.bodyAbout}>
+      <h1>The Generics</h1>
       <h3 className={classes.h3About}>ABOUT</h3>
       <p className={classes.pAbout}>
-        <img className={classes.imgAbout} src={image} />
+        <img className={classes.imgAbout} src={image} alt="" />
         Lorem ipsum carrots enhanced rebates. Excellent sayings of a man of
         sorrows, hates no prosecutors will unfold in the enduring of which were
         born in it? Often leads smallest mistake some pain main responsibilities

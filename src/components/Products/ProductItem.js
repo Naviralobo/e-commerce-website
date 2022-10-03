@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import classes from "./ProductItem.module.css";
 import CartCntxt from "../../store/CartContext";
+import { Link } from "react-router-dom";
 
 const ProductItem = (props) => {
   const cartCntxt = useContext(CartCntxt);
@@ -11,7 +12,10 @@ const ProductItem = (props) => {
           <h3>{props.title}</h3>
         </div>
         <div className={classes.image}>
-          <img src={props.image} />
+          <Link to={"/store/" + props.title}>
+            {/* <Link to="/store/p1"> */}
+            <img src={props.image} alt="" />
+          </Link>
         </div>
         <div className={classes.price}>
           <span>${props.price}</span>

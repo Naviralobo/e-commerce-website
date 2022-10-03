@@ -9,6 +9,7 @@ import CartProvider from "./store/CartProvider";
 import About from "./components/Pages/About";
 import Home from "./components/Pages/Home";
 import ContactDetails from "./components/Pages/ContactDetails";
+import ProductDetail from "./components/Products/ProductDetail";
 
 function App() {
   const [cartIsShown, setCartIsShown] = useState(false);
@@ -23,22 +24,28 @@ function App() {
   return (
     <>
       <Header onShowCart={showCartHandler} />
-      <Footer />
       <CartProvider>
-        <Route path="/store">
+        <Route path="/store" exact>
           {cartIsShown && <Cart onHideCart={hidecartHandler} />}
 
           <AvailableProducts />
+          <Footer />
         </Route>
       </CartProvider>
       <Route path="/about">
         <About />
+        <Footer />
       </Route>
       <Route path="/home">
         <Home />
+        <Footer />
       </Route>
       <Route path="/contact">
         <ContactDetails />
+        <Footer />
+      </Route>
+      <Route path="/store/:productId" exact>
+        <ProductDetail />
       </Route>
     </>
   );

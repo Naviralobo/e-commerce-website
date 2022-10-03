@@ -42,7 +42,7 @@ const Header = (props) => {
           <span> {quantity}</span>
         </div>
       </div>
-      <h1>The Generics</h1>
+      {/* <h1>The Generics</h1> */}
     </header>
   );
 };

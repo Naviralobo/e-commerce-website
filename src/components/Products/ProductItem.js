@@ -12,7 +12,17 @@ const ProductItem = (props) => {
           <h3>{props.title}</h3>
         </div>
         <div className={classes.image}>
-          <Link to={"/store/" + props.title}>
+          <Link
+            to={{
+              pathname: `/store/${props.id}`,
+              state: {
+                price: props.price,
+                title: props.title,
+                image: props.image,
+                id: props.id,
+              },
+            }}
+          >
             {/* <Link to="/store/p1"> */}
             <img src={props.image} alt="" />
           </Link>

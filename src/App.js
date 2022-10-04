@@ -8,6 +8,7 @@ import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
 import About from "./components/Pages/About";
 import Home from "./components/Pages/Home";
+import Login from "./components/Pages/Login";
 import ContactDetails from "./components/Pages/ContactDetails";
 import ProductDetail from "./components/Products/ProductDetail";
 
@@ -23,8 +24,8 @@ function App() {
 
   return (
     <>
-      <Header onShowCart={showCartHandler} />
       <CartProvider>
+        <Header onShowCart={showCartHandler} />
         <Route path="/store" exact>
           {cartIsShown && <Cart onHideCart={hidecartHandler} />}
 
@@ -44,7 +45,11 @@ function App() {
         <ContactDetails />
         <Footer />
       </Route>
-      <Route path="/store/:productId" exact>
+      <Route path="/login">
+        <Login />
+        <Footer />
+      </Route>
+      <Route path="/store/:product" exact>
         <ProductDetail />
       </Route>
     </>

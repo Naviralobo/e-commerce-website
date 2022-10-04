@@ -19,17 +19,16 @@ const CartProvider = (props) => {
   };
 
   const removeItemFromCartHandler = (item) => {
-    // const existingItems = [...items];
-    // console.log(existingItems);
-    // const itemIdx = existingItems.findIndex((i) => i.id === item.id);
-    // if (existingItems[itemIdx].quantity > 1) {
-    //   existingItems[itemIdx].quantity =
-    //     Number(existingItems[itemIdx].quantity) - 1;
-    //   updateItems(existingItems);
-    // } else {
-    //   existingItems.splice(itemIdx, 1);
-    //   updateItems(existingItems);
-    // }
+    const existingItems = [...items];
+    const itemIdx = existingItems.findIndex((i) => i.id === item.id);
+    if (existingItems[itemIdx].quantity > 1) {
+      existingItems[itemIdx].quantity =
+        Number(existingItems[itemIdx].quantity) - 1;
+      updateItems(existingItems);
+    } else {
+      existingItems.splice(itemIdx, 1);
+      updateItems(existingItems);
+    }
   };
   const cartContext = {
     items: items,

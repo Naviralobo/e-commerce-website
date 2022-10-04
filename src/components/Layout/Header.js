@@ -6,7 +6,10 @@ const Header = (props) => {
   const cartCntxt = useContext(CartCntxt);
 
   let quantity = 0;
+  console.log(cartCntxt.items);
+
   cartCntxt.items.forEach((item) => {
+    console.log(quantity);
     quantity = quantity + Number(item.quantity);
   });
 
@@ -32,6 +35,11 @@ const Header = (props) => {
           <li>
             <NavLink activeClassName={classes.active} to="/contact">
               CONTACTUS
+            </NavLink>
+          </li>
+          <li>
+            <NavLink activeClassName={classes.active} to="/login">
+              LOGIN
             </NavLink>
           </li>
         </ul>

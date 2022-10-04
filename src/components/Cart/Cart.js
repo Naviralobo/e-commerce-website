@@ -26,13 +26,14 @@ import CartCntxt from "../../store/CartContext";
 
 const Cart = (props) => {
   const cartCntxt = useContext(CartCntxt);
+
   const cartItems = cartCntxt.items.map((cartElement) => (
     <CartItems
       title={cartElement.title}
       price={cartElement.price}
       image={cartElement.imageUrl}
       quantity={cartElement.quantity}
-      item={props}
+      item={cartElement}
     />
   ));
 

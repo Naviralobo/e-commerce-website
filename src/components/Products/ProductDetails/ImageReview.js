@@ -10,7 +10,7 @@ const images = [
   "/images/t6.webp",
 ];
 
-const ImageReview = () => {
+const ImageReview = (props) => {
   const [img, setImg] = useState(images[0]);
   const hoverHandler = (image, i) => {
     setImg(image);
@@ -63,11 +63,11 @@ const ImageReview = () => {
           -Men'Sweatshirts...
         </p>
         <h3 className={classes.h3}>Smartees </h3>
-        <p className={classes.name}>Full Sleeve Printed Men Sweatshirt</p>
+        <p className={classes.name}>{props.id}</p>
         <p className={classes.price}>Special price</p>
 
         <div>
-          <span className={classes.span1}>Rs.399</span>
+          <span className={classes.span1}>Rs.{props.price}</span>
           <span className={classes.span2}>Rs.1499</span>
           <span className={classes.span3}>73% off</span>
         </div>

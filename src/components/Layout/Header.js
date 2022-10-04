@@ -2,8 +2,10 @@ import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import classes from "./Header.module.css";
 import CartCntxt from "../../store/CartContext";
+import AuthContext from "../../store/AuthContext";
 const Header = (props) => {
   const cartCntxt = useContext(CartCntxt);
+  const authCntxt = useContext(AuthContext);
 
   let quantity = 0;
   console.log(cartCntxt.items);
@@ -37,11 +39,23 @@ const Header = (props) => {
               CONTACTUS
             </NavLink>
           </li>
-          <li>
-            <NavLink activeClassName={classes.active} to="/login">
-              LOGIN
-            </NavLink>
-          </li>
+          {!authCntxt.isLoggedIn && (
+            <li>
+              <NavLink activeClassName={classes.active} to="/login">
+                LOGIN
+              </NavLink>
+            </li>
+          )}
+          {authCntxt.isLoggedIn && (
+            <li>
+              <button
+                className={classes.logoutBtn}
+                onClick={() => authCntxt.logout()}
+              >
+                Logout
+              </button>
+            </li>
+          )}
         </ul>
         <div className={classes.btn}>
           <button onClick={props.onShowCart} className={classes.button}>

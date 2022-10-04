@@ -1,11 +1,12 @@
-import React, { useState } from "react";
-import { Route } from "react-router-dom";
+import React, { useState, useContext } from "react";
+import { Route, Redirect } from "react-router-dom";
 import "./App.css";
 import Header from "./components/Layout/Header";
 import Footer from "./components/Layout/Footer";
 import AvailableProducts from "./components/Products/AvailbleProducts";
 import Cart from "./components/Cart/Cart";
 import CartProvider from "./store/CartProvider";
+import AuthContext from "./store/AuthContext";
 import About from "./components/Pages/About";
 import Home from "./components/Pages/Home";
 import Login from "./components/Pages/Login";
@@ -13,6 +14,8 @@ import ContactDetails from "./components/Pages/ContactDetails";
 import ProductDetail from "./components/Products/ProductDetail";
 
 function App() {
+  const authCntxt = useContext(AuthContext);
+
   const [cartIsShown, setCartIsShown] = useState(false);
 
   const hidecartHandler = () => {
@@ -26,12 +29,20 @@ function App() {
     <>
       <CartProvider>
         <Header onShowCart={showCartHandler} />
-        <Route path="/store" exact>
-          {cartIsShown && <Cart onHideCart={hidecartHandler} />}
+        {!authCntxt.isLoggedIn && (
+          <Route path="/store" exact>
+            <Redirect to="/login" />
+          </Route>
+        )}
 
-          <AvailableProducts />
-          <Footer />
-        </Route>
+        {authCntxt.isLoggedIn && (
+          <Route path="/store" exact>
+            {cartIsShown && <Cart onHideCart={hidecartHandler} />}
+
+            <AvailableProducts />
+            <Footer />
+          </Route>
+        )}
       </CartProvider>
       <Route path="/about">
         <About />

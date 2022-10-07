@@ -8,10 +8,8 @@ const Header = (props) => {
   const authCntxt = useContext(AuthContext);
 
   let quantity = 0;
-  console.log(cartCntxt.items);
 
   cartCntxt.items.forEach((item) => {
-    console.log(quantity);
     quantity = quantity + Number(item.quantity);
   });
 
@@ -57,12 +55,14 @@ const Header = (props) => {
             </li>
           )}
         </ul>
-        <div className={classes.btn}>
-          <button onClick={props.onShowCart} className={classes.button}>
-            Cart
-          </button>
-          <span> {quantity}</span>
-        </div>
+        {authCntxt.isLoggedIn && (
+          <div className={classes.btn}>
+            <button onClick={props.onShowCart} className={classes.button}>
+              Cart
+            </button>
+            <span> {quantity}</span>
+          </div>
+        )}
       </div>
       {/* <h1>The Generics</h1> */}
     </header>

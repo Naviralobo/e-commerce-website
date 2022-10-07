@@ -1,95 +1,8 @@
-// import React, { useRef, useContext, useState } from "react";
-// import classes from "./Login.module.css";
-// import AuthContext from "../../store/AuthContext";
-// import { useHistory } from "react-router-dom";
-
-// const Login = () => {
-//   const history = useHistory();
-//   const [isLogIn, setIsLogin] = useState(false);
-//   const authCntxt = useContext(AuthContext);
-//   const emailInputRef = useRef();
-//   const passwordInputRef = useRef();
-
-//   const submitHandler = (event) => {
-//     event.preventDefault();
-//     const enteredEmail = emailInputRef.current.value;
-//     const enteredPassword = passwordInputRef.current.value;
-//     // console.log(enteredEmail, enteredPassword);
-//     fetch(
-//       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDSpzTjcNExN8iLGiCuL3K19dgagjBRG4Q",
-//       {
-//         method: "POST",
-//         body: JSON.stringify({
-//           email: enteredEmail,
-//           password: enteredPassword,
-//           returnSecureToken: true,
-//         }),
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//       }
-//     )
-//       .then((res) => {
-//         if (res.ok) {
-//           return res.json();
-//         } else {
-//           return res.json().then((data) => {
-//             let errorMessage = "Authentication Failed";
-//             if (data && data.error && data.message)
-//               errorMessage = data.error.message;
-
-//             throw new Error(errorMessage);
-//           });
-//         }
-//       })
-//       .then((data) => {
-//         setIsLogin(true);
-//         authCntxt.login(data.idToken);
-
-//         history.replace("/store");
-//         console.log(data.idToken);
-//       })
-//       .catch((err) => {
-//         alert(err.message);
-//       });
-//   };
-//   const logoutHandler = () => {
-//     authCntxt.logout();
-//   };
-
-//   return (
-//     <section className={classes.auth}>
-//       <form onSubmit={submitHandler}>
-//         <div className={classes.control}>
-//           <label htmlFor="email">Your Email</label>
-//           <input type="email" id="email" required ref={emailInputRef} />
-//         </div>
-//         <div className={classes.control}>
-//           <label htmlFor="password">Your Password</label>
-//           <input
-//             type="password"
-//             id="password"
-//             required
-//             ref={passwordInputRef}
-//           />
-//         </div>
-//         <div className={classes.actions}>
-//           {!isLogIn && <button type="submit">Login</button>}
-//           {isLogIn && (
-//             <button type="button" onClick={logoutHandler}>
-//               Logout
-//             </button>
-//           )}
-//         </div>
-//       </form>
-//     </section>
-//   );
-// };
-
-// export default Login;
-import { useState, useRef, useContext } from "react";
+import { useState, useRef, useContext, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import AuthContext from "../../store/AuthContext";
+import CartContext from "../../store/CartContext";
+import axios from "axios";
 
 import classes from "./Login.module.css";
 
@@ -99,6 +12,8 @@ const Login = () => {
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
   const authCntxt = useContext(AuthContext);
+  const cartCntxt = useContext(CartContext);
+
   const history = useHistory();
 
   const switchAuthModeHandler = () => {
@@ -108,6 +23,7 @@ const Login = () => {
     event.preventDefault();
     const enteredEmail = emailInputRef.current.value;
     const enteredPassword = passwordInputRef.current.value;
+
     setIsLoading(true);
     let url;
     if (isLogin) {
@@ -146,6 +62,31 @@ const Login = () => {
       .then((data) => {
         authCntxt.login(data.idToken);
         history.replace("/store");
+        localStorage.setItem("email", enteredEmail);
+        let email = localStorage.getItem("email");
+        let crudEmail;
+        if (email != null) {
+          crudEmail = email.replace(/[@.]/g, "");
+        }
+        axios
+          .get(
+            `https://crudcrud.com/api/c9b8980b2e6d49d4b8801f6a29d3cda3/cart${crudEmail}`
+          )
+          .then((response) => {
+            const cartItems = [];
+            for (let i = 0; i < response.data.length; i++) {
+              let item = response.data[i];
+              const index = cartItems.findIndex((i) => i.title === item.title);
+              if (index == -1) {
+                cartItems.push(response.data[i]);
+              } else {
+                cartItems[index].quantity = cartItems[index].quantity + 1;
+              }
+            }
+
+            cartCntxt.updateItem(cartItems);
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => {
         alert(err.message);
@@ -158,7 +99,7 @@ const Login = () => {
       <form onSubmit={submitHandler}>
         <div className={classes.control}>
           <label htmlFor="email">Your Email</label>
-          <input type="email" id="email" required ref={emailInputRef} />
+          <input type="text" id="email" required ref={emailInputRef} />
         </div>
         <div className={classes.control}>
           <label htmlFor="password">Your Password</label>

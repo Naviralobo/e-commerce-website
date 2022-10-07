@@ -31,8 +31,9 @@ const Cart = (props) => {
     <CartItems
       title={cartElement.title}
       price={cartElement.price}
-      image={cartElement.imageUrl}
+      // image={cartElement.imageUrl}
       quantity={cartElement.quantity}
+      id={cartElement._id}
       item={cartElement}
     />
   ));

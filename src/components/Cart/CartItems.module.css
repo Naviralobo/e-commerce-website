@@ -19,6 +19,11 @@
 }
 .items {
   width: 45%;
+  object-fit: contain;
+}
+.items span {
+  margin-left: 0%;
+  display: block;
 }
 .price {
   width: 20%;

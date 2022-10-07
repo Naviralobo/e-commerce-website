@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom"; //useParams was used before
 import Header from "./ProductDetails/Header";
 import ItemDivision from "./ProductDetails/ItemDivision";
 import ImageReview from "./ProductDetails/ImageReview";

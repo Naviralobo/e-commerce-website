@@ -31,18 +31,28 @@ function App() {
         <Header onShowCart={showCartHandler} />
         {!authCntxt.isLoggedIn && (
           <Route path="/store" exact>
+            {" "}
+            ||<Route path="" exact></Route>
             <Redirect to="/login" />
           </Route>
         )}
 
         {authCntxt.isLoggedIn && (
           <Route path="/store" exact>
+            {" "}
+            || <Route path="" exact></Route>
             {cartIsShown && <Cart onHideCart={hidecartHandler} />}
-
             <AvailableProducts />
             <Footer />
           </Route>
         )}
+        <Route path="/login">
+          <Login />
+          <Footer />
+        </Route>
+        <Route path="/store/:product" exact>
+          <ProductDetail />
+        </Route>
       </CartProvider>
       <Route path="/about">
         <About />
@@ -55,13 +65,6 @@ function App() {
       <Route path="/contact">
         <ContactDetails />
         <Footer />
-      </Route>
-      <Route path="/login">
-        <Login />
-        <Footer />
-      </Route>
-      <Route path="/store/:product" exact>
-        <ProductDetail />
       </Route>
     </>
   );

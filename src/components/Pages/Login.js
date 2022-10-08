@@ -70,7 +70,7 @@ const Login = () => {
         }
         axios
           .get(
-            `https://crudcrud.com/api/f0397986342c494f8006013f25aec0fa/cart${crudEmail}`
+            `https://crudcrud.com/api/223fa645309a4b9da86bfee509c5134e/cart${crudEmail}`
           )
           .then((res) => {
             let cartItems = [];

@@ -70,21 +70,15 @@ const Login = () => {
         }
         axios
           .get(
-            `https://crudcrud.com/api/c9b8980b2e6d49d4b8801f6a29d3cda3/cart${crudEmail}`
+            `https://crudcrud.com/api/f0397986342c494f8006013f25aec0fa/cart${crudEmail}`
           )
-          .then((response) => {
-            const cartItems = [];
-            for (let i = 0; i < response.data.length; i++) {
-              let item = response.data[i];
-              const index = cartItems.findIndex((i) => i.title === item.title);
-              if (index == -1) {
-                cartItems.push(response.data[i]);
-              } else {
-                cartItems[index].quantity = cartItems[index].quantity + 1;
-              }
+          .then((res) => {
+            let cartItems = [];
+            for (let i = 0; i < res.data.length; i++) {
+              let item = res.data[i];
+              cartItems.push(item);
             }
-
-            cartCntxt.updateItem(cartItems);
+            cartCntxt.update(cartItems);
           })
           .catch((err) => console.log(err));
       })

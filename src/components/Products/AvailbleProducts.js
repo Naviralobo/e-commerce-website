@@ -4,6 +4,7 @@ import classes from "./AvailableProducts.module.css";
 
 const productsArr = [
   {
+    id: "",
     title: "Colors",
     price: 100,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
@@ -11,18 +12,21 @@ const productsArr = [
     // remove quantity later
   },
   {
+    id: "",
     title: "Black and white Colors",
     price: 50,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%202.png",
     quantity: 1,
   },
   {
+    id: "",
     title: "Yellow and Black Colors",
     price: 70,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%203.png",
     quantity: 1,
   },
   {
+    id: "",
     title: "Blue Color",
     price: 100,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
@@ -33,7 +37,7 @@ const productsArr = [
 const AvailableProducts = () => {
   const productList = productsArr.map((product) => (
     <ProductItem
-      id={product.title}
+      id={product.id}
       title={product.title}
       price={product.price}
       image={product.imageUrl}

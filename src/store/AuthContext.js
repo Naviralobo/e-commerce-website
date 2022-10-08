@@ -1,6 +1,4 @@
-import React, { useContext, useState } from "react";
-import CartContext from "./CartContext";
-import axios from "axios";
+import React, { useState } from "react";
 
 const AuthContext = React.createContext({
   token: "",
@@ -10,14 +8,8 @@ const AuthContext = React.createContext({
 });
 
 export const AuthContextProvider = (props) => {
-  const cartCntxt = useContext(CartContext);
   const initialToken = localStorage.getItem("token");
   const [token, setToken] = useState(initialToken);
-  const email = localStorage.getItem("email");
-  let crudEmail;
-  if (email != null) {
-    crudEmail = email.replace(/[@.]/g, ""); //to remove special characters
-  }
 
   const userIsLoggedIn = !!token; //to convert truthy or falsy valuues to boolean true or false
 

@@ -18,13 +18,13 @@ const ProductItem = (props) => {
               state: {
                 price: props.price,
                 title: props.title,
-                image: props.image,
+                imageUrl: props.imageUrl,
                 id: props.id,
               },
             }}
           >
             {/* <Link to="/store/p1"> */}
-            <img src={props.image} alt="" />
+            <img src={props.imageUrl} alt="" />
           </Link>
         </div>
         <div className={classes.price}>

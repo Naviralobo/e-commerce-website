@@ -9,12 +9,12 @@ const ProductDetail = () => {
   // const params = useParams();
   // console.log(params);
   const location = useLocation();
-  const { price, title, image, id } = location.state;
+  const { price, title, imageUrl, id } = location.state;
   return (
     <>
       <Header />
       <ItemDivision />
-      <ImageReview id={id} price={price} title={title} image={image} />
+      <ImageReview id={id} price={price} title={title} imageUrl={imageUrl} />
     </>
   );
 };

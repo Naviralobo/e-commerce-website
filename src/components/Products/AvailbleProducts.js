@@ -9,7 +9,6 @@ const productsArr = [
     price: 100,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%201.png",
     quantity: 1,
-    // remove quantity later
   },
   {
     id: "",
@@ -40,7 +39,7 @@ const AvailableProducts = () => {
       id={product.id}
       title={product.title}
       price={product.price}
-      image={product.imageUrl}
+      imageUrl={product.imageUrl}
       item={product}
     />
   ));

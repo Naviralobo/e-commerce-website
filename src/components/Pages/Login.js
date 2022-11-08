@@ -28,10 +28,10 @@ const Login = () => {
     let url;
     if (isLogin) {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyDSpzTjcNExN8iLGiCuL3K19dgagjBRG4Q";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyB5MoZmtxwmft7TUTBScTvBBgS049dgfTY";
     } else {
       url =
-        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDSpzTjcNExN8iLGiCuL3K19dgagjBRG4Q";
+        "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyB5MoZmtxwmft7TUTBScTvBBgS049dgfTY";
     }
 
     fetch(url, {
@@ -70,7 +70,7 @@ const Login = () => {
         }
         axios
           .get(
-            `https://crudcrud.com/api/223fa645309a4b9da86bfee509c5134e/cart${crudEmail}`
+            `https://crudcrud.com/api/85da8fb90d454c97ad510aa5a880fe3a/cart${crudEmail}`
           )
           .then((res) => {
             let cartItems = [];
